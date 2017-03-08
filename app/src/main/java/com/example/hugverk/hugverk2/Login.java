@@ -5,4 +5,10 @@ package com.example.hugverk.hugverk2;
  */
 
 public class Login {
+    private String username;
+    private String password;
+
+    public boolean validate(){
+        return true;
+    }
 }
