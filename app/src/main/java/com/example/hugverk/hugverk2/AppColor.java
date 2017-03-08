@@ -13,11 +13,13 @@ public class AppColor{
     private String colorHue;
     //private Date thedate;
 
-    public AppColor(String hex, String rgb, String colorName, String colorHue){
+    public AppColor(String hex){
         this.hex = hex;
-        this.rgb = rgb;
-        this.colorName = colorName;
-        this.colorHue = colorHue;
+        this.rgb = "Leyndó";
+        this.colorName = "Meira leyndó";
+        //this.rgb = rgb;
+        //this.colorName = colorName;
+        //this.colorHue = colorHue;
 
     }
 

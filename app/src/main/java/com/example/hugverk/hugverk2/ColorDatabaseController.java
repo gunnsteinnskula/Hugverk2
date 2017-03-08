@@ -33,12 +33,12 @@ public class ColorDatabaseController {
         Cursor resultSet = mydatabase.rawQuery("Select * from history",null);
         resultSet.moveToFirst();
         String history = resultSet.getString(0);
-        return new AppColor(null,null,history,null);
+        return new AppColor(history);
     }
 
     public void storeColor(AppColor AppColor){
         String name = AppColor.getColorName();
-        mydatabase.execSQL("INSERT INTO history VALUES('admin','admin');");
+        mydatabase.execSQL("INSERT INTO history VALUES('history','" + name + "');");
 
     }
 
@@ -54,7 +54,7 @@ public class ColorDatabaseController {
         Cursor resultSet = mydatabase.rawQuery("Select * from favcolor",null);
         resultSet.moveToFirst();
         String favcolor = resultSet.getString(0);
-        return new AppColor(null,null,favcolor,null);
+        return new AppColor(favcolor);
     }
 
     public AppColor getDayColor(){
@@ -62,7 +62,7 @@ public class ColorDatabaseController {
         Cursor resultSet = mydatabase.rawQuery("Select * from daycolor",null);
         resultSet.moveToFirst();
         String thedaycolor = resultSet.getString(0);
-        return new AppColor(null,null,thedaycolor,null);
+        return new AppColor(thedaycolor);
     }
 
     public String getName(AppColor AppColor){
