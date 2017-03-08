@@ -19,7 +19,7 @@ public class UserDatabaseController {
 
     }
 
-    public void getUserHistory(username){
+    public void getUserHistory(String username){
 
     }
 }
