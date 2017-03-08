@@ -7,11 +7,18 @@ import java.util.Date;
 
 public class AppColor extends AppCompatActivity {
 
-    String hex;
-    String rgb;
-    String colorName;
-    String colorHue;
-    Date time;
+    private String hex;
+    private String rgb;
+    private String colorName;
+    private String colorHue;
+    private Date thedate;
+
+    public AppColor(String hex,String rgb,String colorName,String colorHue){
+        this.hex = hex;
+        this.rgb = rgb;
+        this.colorName = colorName;
+        this.colorHue = colorHue;
+    }
 
     public String getHex(){
 
@@ -34,17 +41,19 @@ public class AppColor extends AppCompatActivity {
         return colorName;
     }
 
+    /*
     public Date getDate(){
         Date date;
         return date;
     }
+    */
 
     public String toString(){
 
         return colorName;
     }
 
-    public String blendColors(String, String){
+    public String blendColors(String col1, String col2){
         return colorName;
     }
 
