@@ -21,11 +21,11 @@ public class ColorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color_activity);
 
-        ColorDatabaseController.initdb();
+        //ColorDatabaseController.initdb();
 
         TextView colorTextView = (TextView) findViewById(R.id.color_textview);
         ColorDrawable textViewColor = (ColorDrawable) colorTextView.getBackground();
-        final AppColor appcolor = new AppColor(textViewColor.toString());
+        final AppColor appcolor = new AppColor(String.valueOf(textViewColor.getColor()));
 
         //rgb_button, hex_button, colorname_button
         Button rgbButton = (Button) findViewById(R.id.rgb_button);

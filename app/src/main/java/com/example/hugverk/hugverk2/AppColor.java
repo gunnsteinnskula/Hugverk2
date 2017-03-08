@@ -17,9 +17,10 @@ public class AppColor{
     public AppColor(String hex){
         this.hex = hex;
         this.rgb = "Leyndó - kemur seinna";
-        //this.rgb = rgb;
-        //this.colorName = colorName;
-        //this.colorHue = colorHue;
+        this.colorName = "kemur bráðum";
+        this.colorHue = "Og bráðum";
+
+        // Þett virkar ekki vegna þess að db krassar, þarf að skoða betur
         //this.colorName = ColorDatabaseController.getName(this.hex);
 
     }
