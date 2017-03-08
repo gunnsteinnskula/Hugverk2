@@ -15,13 +15,12 @@ public class AppColor{
     //private Date thedate;
 
     public AppColor(String hex){
-        int color = Color.parseColor("#123456");
         this.hex = hex;
         this.rgb = "Leyndó - kemur seinna";
         //this.rgb = rgb;
         //this.colorName = colorName;
         //this.colorHue = colorHue;
-        this.colorName = ColorDatabaseController.getName(this.hex);
+        //this.colorName = ColorDatabaseController.getName(this.hex);
 
     }
 
