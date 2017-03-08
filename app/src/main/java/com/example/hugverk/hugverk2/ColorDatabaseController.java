@@ -22,15 +22,15 @@ public class ColorDatabaseController {
         return colorlist;
     }
 
-    public void storeColor(Color AppColor){
+    public void storeColor(AppColor AppColor){
 
     }
 
-    public void removeFromHistory(Color AppColor){
+    public void removeFromHistory(AppColor AppColor){
 
     }
 
-    public void setFavorite(Color AppColor){
+    public void setFavorite(AppColor AppColor){
 
     }
 
@@ -45,14 +45,13 @@ public class ColorDatabaseController {
     }
 
     public String getName(Color color){
-        String name = new String;
+        String name = "thename";
 
         return name;
     }
 
     public String getHue(Color color){
-        String hue = new String;
-        hue = color.toString();
+        String hue = color.toString();
         return hue;
     }
 
