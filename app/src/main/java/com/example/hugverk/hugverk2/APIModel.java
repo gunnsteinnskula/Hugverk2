@@ -7,11 +7,11 @@ import android.graphics.Color;
  */
 
 public class APIModel {
-    String popularColor;
+    Color popularColor;
 
     public Color calculateColorPopularity(){
-        Color color;
-        return color;
+        int a = 1;
+        return popularColor;
     }
 
 }

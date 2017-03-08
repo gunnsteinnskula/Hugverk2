@@ -8,6 +8,7 @@ import android.graphics.Color;
 
 public class APIController {
     String dbName;
+    Color color;
 
     public Color getColorRecommendation(Color color){
 
@@ -20,7 +21,6 @@ public class APIController {
     }
 
     public Color getPopularityColor(){
-        Color color;
 
         return color;
     }
