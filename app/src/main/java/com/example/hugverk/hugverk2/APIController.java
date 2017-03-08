@@ -22,7 +22,7 @@ public class APIController {
 
     public Color getPopularityColor(){
 
-        return color;
+        return new Color();
     }
 }
 
