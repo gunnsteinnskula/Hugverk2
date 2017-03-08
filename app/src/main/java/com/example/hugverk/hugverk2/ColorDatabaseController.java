@@ -17,7 +17,7 @@ public class ColorDatabaseController {
 
     static SQLiteDatabase mydatabase = SQLiteDatabase.openOrCreateDatabase("colordb",null);
 
-    public void initdb(){
+    public static void initdb(){
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS daycolor(daycolor VARCHAR);");
         mydatabase.execSQL("INSERT INTO daycolor VALUES('green');");
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS favcolor(favcolor VARCHAR);");
