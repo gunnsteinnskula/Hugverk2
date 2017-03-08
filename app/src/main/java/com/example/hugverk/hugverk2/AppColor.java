@@ -5,13 +5,13 @@ import android.os.Bundle;
 
 import java.util.Date;
 
-public class AppColor extends AppCompatActivity {
+public class AppColor{
 
     private String hex;
     private String rgb;
     private String colorName;
     private String colorHue;
-    private Date thedate;
+    //private Date thedate;
 
     public AppColor(String hex,String rgb,String colorName,String colorHue){
         this.hex = hex;
@@ -21,24 +21,23 @@ public class AppColor extends AppCompatActivity {
     }
 
     public String getHex(){
-
-        return hex;
+        return this.hex;
     }
 
     public String getRgb(){
-        return rgb;
+        return this.rgb;
     }
 
-    public String getColorName(String rgb){
-        return colorName;
+    public String getColorName(){
+        return this.colorName;
     }
 
     public void setColor(String colorName){
-
+        this.colorName = colorName;
     }
 
-    public String getHue(String colorName){
-        return colorName;
+    public String getHue(){
+        return this.colorHue;
     }
 
     /*
@@ -47,14 +46,5 @@ public class AppColor extends AppCompatActivity {
         return date;
     }
     */
-
-    public String toString(){
-
-        return colorName;
-    }
-
-    public String blendColors(String col1, String col2){
-        return colorName;
-    }
 
 }

@@ -1,28 +1,44 @@
 package com.example.hugverk.hugverk2;
 
+import android.database.Cursor;
 import android.graphics.Color;
 
 import java.util.List;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * Created by Gunnsteinn on 08/03/17.
  */
 
 public class ColorDatabaseController {
-    private String dbName;
-    private Color AppColor;
-    private List<AppColor> colorlist;
 
-    public ColorDatabaseController(String dbName) {
-        this.dbName = dbName;
+    SQLiteDatabase mydatabase = SQLiteDatabase.openOrCreateDatabase("colordb",null);
+
+    public void initdb(){
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS daycolor(daycolor VARCHAR);");
+        mydatabase.execSQL("INSERT INTO daycolor VALUES('green');");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS favcolor(favcolor VARCHAR);");
+        mydatabase.execSQL("INSERT INTO favcolor VALUES('green');");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS favcolor(favcolor VARCHAR);");
+        mydatabase.execSQL("INSERT INTO daycolor VALUES('green');");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS history(history VARCHAR);");
+        mydatabase.execSQL("INSERT INTO history VALUES('green');");
+
     }
 
-    public List getHistory(){
-
-        return colorlist;
+    public AppColor getHistory(){
+        Cursor resultSet = mydatabase.rawQuery("Select * from history",null);
+        resultSet.moveToFirst();
+        String history = resultSet.getString(0);
+        return new AppColor(null,null,history,null);
     }
 
     public void storeColor(AppColor AppColor){
+        String name = AppColor.getColorName();
+        mydatabase.execSQL("INSERT INTO history VALUES('admin','admin');");
 
     }
 
@@ -34,20 +50,25 @@ public class ColorDatabaseController {
 
     }
 
-    public List<AppColor> getFavorite(){
-
-        return colorlist;
+    public AppColor getFavorite(){
+        Cursor resultSet = mydatabase.rawQuery("Select * from favcolor",null);
+        resultSet.moveToFirst();
+        String favcolor = resultSet.getString(0);
+        return new AppColor(null,null,favcolor,null);
     }
 
-    public Color getDayColor(){
+    public AppColor getDayColor(){
 
-        return AppColor;
+        Cursor resultSet = mydatabase.rawQuery("Select * from daycolor",null);
+        resultSet.moveToFirst();
+        String thedaycolor = resultSet.getString(0);
+        return new AppColor(null,null,thedaycolor,null);
     }
 
-    public String getName(Color color){
+    public String getName(AppColor AppColor){
         String name = "thename";
-
         return name;
+
     }
 
     public String getHue(Color color){
