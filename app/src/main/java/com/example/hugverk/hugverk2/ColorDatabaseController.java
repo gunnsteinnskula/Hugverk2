@@ -15,15 +15,15 @@ import android.util.Log;
 
 public class ColorDatabaseController {
 
-    SQLiteDatabase mydatabase = SQLiteDatabase.openOrCreateDatabase("colordb",null);
+    static SQLiteDatabase mydatabase = SQLiteDatabase.openOrCreateDatabase("colordb",null);
 
     public void initdb(){
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS daycolor(daycolor VARCHAR);");
         mydatabase.execSQL("INSERT INTO daycolor VALUES('green');");
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS favcolor(favcolor VARCHAR);");
         mydatabase.execSQL("INSERT INTO favcolor VALUES('green');");
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS favcolor(favcolor VARCHAR);");
-        mydatabase.execSQL("INSERT INTO daycolor VALUES('green');");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS namecolor(namecolor VARCHAR);");
+        mydatabase.execSQL("INSERT INTO namecolor VALUES('Blue thunder rain');");
         mydatabase.execSQL("CREATE TABLE IF NOT EXISTS history(history VARCHAR);");
         mydatabase.execSQL("INSERT INTO history VALUES('green');");
 
@@ -65,9 +65,10 @@ public class ColorDatabaseController {
         return new AppColor(thedaycolor);
     }
 
-    public String getName(AppColor AppColor){
-        String name = "thename";
-        return name;
+    public static String getName(String hex){
+        Cursor resultSet = mydatabase.rawQuery("Select * from namecolor",null);
+        resultSet.moveToFirst();
+        return resultSet.getString(0);
 
     }
 

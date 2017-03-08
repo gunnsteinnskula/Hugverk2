@@ -1,5 +1,6 @@
 package com.example.hugverk.hugverk2;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -14,12 +15,13 @@ public class AppColor{
     //private Date thedate;
 
     public AppColor(String hex){
+        int color = Color.parseColor("#123456");
         this.hex = hex;
-        this.rgb = "Leyndó";
-        this.colorName = "Meira leyndó";
+        this.rgb = "Leyndó - kemur seinna";
         //this.rgb = rgb;
         //this.colorName = colorName;
         //this.colorHue = colorHue;
+        this.colorName = ColorDatabaseController.getName(this.hex);
 
     }
 
@@ -42,6 +44,7 @@ public class AppColor{
     public String getHue(){
         return this.colorHue;
     }
+
 
     /*
     public Date getDate(){
