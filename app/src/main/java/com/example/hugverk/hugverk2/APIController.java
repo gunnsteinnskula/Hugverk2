@@ -7,7 +7,7 @@ import android.graphics.Color;
  */
 
 public class APIController {
-    String dbName = new String;
+    String dbName;
 
     public Color getColorRecommendation(Color color){
 
@@ -20,7 +20,7 @@ public class APIController {
     }
 
     public Color getPopularityColor(){
-        Color color = new Color;
+        Color color;
 
         return color;
     }

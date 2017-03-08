@@ -7,7 +7,7 @@ import java.util.List;
  */
 
 public class UserDatabaseController {
-    public String username;
+    String username;
     public List<String> userHistory;
     public List<String> userInfo;
 
@@ -15,5 +15,11 @@ public class UserDatabaseController {
         return userInfo;
     }
 
-    public List<String>
+    public void setUserInfo(List<String> userInfo){
+
+    }
+
+    public void getUserHistory(username){
+
+    }
 }

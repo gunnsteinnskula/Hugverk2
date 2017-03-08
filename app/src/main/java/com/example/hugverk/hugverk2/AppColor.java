@@ -35,7 +35,7 @@ public class AppColor extends AppCompatActivity {
     }
 
     public Date getDate(){
-        Date date = new Date;
+        Date date;
         return date;
     }
 
@@ -48,14 +48,4 @@ public class AppColor extends AppCompatActivity {
         return colorName;
     }
 
-
-
-
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_app_color);
-    }
 }
