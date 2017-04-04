@@ -1,5 +1,6 @@
 package com.example.hugverk.hugverk2;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -8,13 +9,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import static android.R.attr.button;
 
 /**
  * Created by Gunnsteinn on 08/03/17.
@@ -76,8 +73,16 @@ public class ColorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_color_activity);
+        setContentView(R.layout.activity_color);
 
+        Button btn = (Button)findViewById(R.id.camera_button);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ColorActivity.this, CameraActivity.class));
+            }
+        });
         //ColorDatabaseController.initdb();
 
 /*
