@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 import static android.R.attr.button;
 
 /**
@@ -78,6 +80,14 @@ public class ColorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color_activity);
 
+        int[] colorInt = (getBackgroundColor(findViewById(R.id.color_textview)));
+        AppColor appcolor = null;
+        try {
+            appcolor = new AppColor(colorInt);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         //ColorDatabaseController.initdb();
 
 /*
@@ -96,32 +106,38 @@ public class ColorActivity extends AppCompatActivity {
 
         Button rgbButton = (Button) findViewById(R.id.rgb_button);
 
+        final AppColor finalAppcolor = appcolor;
         rgbButton.setOnClickListener(new View.OnClickListener(){
-            int[] colorInt = (getBackgroundColor(findViewById(R.id.color_textview)));
-            final AppColor appcolor = new AppColor(colorInt);
+            //int[] colorInt = (getBackgroundColor(findViewById(R.id.color_textview)));
+            //final AppColor appcolor = new AppColor(colorInt);
             @Override
             public void onClick(View v){
-                Toast.makeText(ColorActivity.this,appcolor.getHex(colorInt) , Toast.LENGTH_LONG).show();
+                Toast.makeText(ColorActivity.this, finalAppcolor.getRGB() , Toast.LENGTH_LONG).show();
             }
         });
-/*
+
         Button hexButton = (Button) findViewById(R.id.hex_button);
 
+        final AppColor finalAppcolor1 = appcolor;
         hexButton.setOnClickListener(new View.OnClickListener(){
+            //int[] colorInt = (getBackgroundColor(findViewById(R.id.color_textview)));
+            //final AppColor appcolor = new AppColor(colorInt);
             @Override
             public void onClick(View v){
-                Toast.makeText(ColorActivity.this, appcolor.getHex() , Toast.LENGTH_LONG).show();
+                Toast.makeText(ColorActivity.this, finalAppcolor1.getHex() , Toast.LENGTH_LONG).show();
             }
         });
 
         Button colorNameButton = (Button) findViewById(R.id.colorname_button);
 
+        final AppColor finalAppcolor2 = appcolor;
         colorNameButton.setOnClickListener(new View.OnClickListener(){
+            //int[] colorInt = (getBackgroundColor(findViewById(R.id.color_textview)));
+            //final AppColor appcolor = new AppColor(colorInt);
             @Override
             public void onClick(View v){
-                Toast.makeText(ColorActivity.this, appcolor.getColorName() , Toast.LENGTH_LONG).show();
+                Toast.makeText(ColorActivity.this, finalAppcolor2.getColorName() , Toast.LENGTH_LONG).show();
             }
         });
-        */
     }
 }
