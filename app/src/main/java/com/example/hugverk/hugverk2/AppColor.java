@@ -14,8 +14,8 @@ public class AppColor{
     private String colorHue;
     //private Date thedate;
 
-    public AppColor(String hex){
-        this.hex = hex;
+    public AppColor(int[] rgb){
+        this.hex = "test";
         this.rgb = "Leyndó - kemur seinna";
         this.colorName = "kemur bráðum";
         this.colorHue = "Og bráðum";
@@ -25,8 +25,9 @@ public class AppColor{
 
     }
 
-    public String getHex(){
-        return this.hex;
+    public String getHex(int[]rgb) {
+        this.hex = String.format( "#%02x%02x%02x", rgb[0], rgb[1], rgb[2] );
+        return this.hex.toString();
     }
 
     public String getRgb(){
