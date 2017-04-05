@@ -168,6 +168,7 @@ public class ColorActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v){
                     Toast.makeText(ColorActivity.this, finalAppcolor.getRGB() , Toast.LENGTH_LONG).show();
+                    toClip(finalAppcolor.getRGB());
                 }
             });
         } catch (Exception e) {
