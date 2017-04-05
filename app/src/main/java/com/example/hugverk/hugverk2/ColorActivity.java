@@ -181,6 +181,7 @@ public class ColorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Toast.makeText(ColorActivity.this, finalAppcolor1.getHex() , Toast.LENGTH_LONG).show();
+                toClip(finalAppcolor1.getHex());
             }
         });
         Button colorNameButton = (Button) findViewById(R.id.colorname_button);
