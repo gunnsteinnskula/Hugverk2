@@ -770,7 +770,7 @@ public class Camera2BasicFragment extends Fragment
      * Initiate a still image capture.
      */
     private void takePicture() {
-        runPrecaptureSequence();
+        lockFocus();
     }
 
     /**
@@ -839,8 +839,7 @@ public class Camera2BasicFragment extends Fragment
                 public void onCaptureCompleted(@NonNull CameraCaptureSession session,
                                                @NonNull CaptureRequest request,
                                                @NonNull TotalCaptureResult result) {
-                    showToast("Saved: " + mFile);
-                    Log.d(TAG, "We got the color");
+                    showToast("Color saved!");
                     unlockFocus();
                 }
             };

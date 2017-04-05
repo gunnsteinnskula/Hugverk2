@@ -14,22 +14,18 @@ public class AppColor{
 
     public AppColor(Integer[] rgb) throws IOException {
         this.hex = String.format( "#%02x%02x%02x", rgb[0], rgb[1], rgb[2] );
-        this.rgb = String.format( "Red: %s, Green: %s, Blue: %s", rgb[0], rgb[1], rgb[2] );
+        this.rgb = String.format( "RGB (%s, %s, %s)", rgb[0], rgb[1], rgb[2] );
 
         this.colorName = "Loading";
         this.colorHue = "TODO";
         this.colorInt = parseColor(this.hex);
-
     }
 
-    private void getNameFromServer() {
-
-    }
 
     public String getHex() { return this.hex; }
 
     public String getCleanHex() {
-        String clean = hex;
+        String clean = this.hex;
         return clean.replace("#", "");
     }
 

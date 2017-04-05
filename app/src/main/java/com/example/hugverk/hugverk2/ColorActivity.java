@@ -31,8 +31,6 @@ import java.io.IOException;
 
 public class ColorActivity extends AppCompatActivity {
 
-
-
     private Bitmap mBitmap;
     private Canvas mCanvas;
     private Rect mBounds;
@@ -117,18 +115,16 @@ public class ColorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color);
-        int[] colorInt = (getBackgroundColor(findViewById(R.id.color_textview)));
-        Integer[] test = rgbFromPicture("/storage/emulated/0/Android/data/com.example.hugverk.hugverk2/files/pic.jpg");
-
+        Integer[] rgb = rgbFromPicture("/storage/emulated/0/Android/data/com.example.hugverk.hugverk2/files/pic.jpg");
 
         try {
-            appcolor = new AppColor(test);
-            String myhex = appcolor.getHex();
+            appcolor = new AppColor(rgb);
             findViewById(R.id.color_textview).setBackgroundColor(appcolor.getInt());
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+        findViewById(R.id.color_textview).setBackgroundColor(Color.parseColor(appcolor.getHex()));
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "https://colornames.herokuapp.com/hex/" + appcolor.getCleanHex();
@@ -139,6 +135,8 @@ public class ColorActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         Log.e("Response is: ", response);
                         appcolor.setColorName(response);
+                        Button colorNameButton = (Button) findViewById(R.id.colorname_button);
+                        colorNameButton.setText(response);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -161,35 +159,35 @@ public class ColorActivity extends AppCompatActivity {
 
 
         Button rgbButton = (Button) findViewById(R.id.rgb_button);
+        rgbButton.setText(appcolor.getRGB());
+        rgbButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Toast.makeText(ColorActivity.this, "RGB value copied to clipboard" , Toast.LENGTH_LONG).show();
+                toClip(appcolor.getRGB());
+            }
+        });
 
-        try {
-            final AppColor finalAppcolor = appcolor;
-            rgbButton.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v){
-                    Toast.makeText(ColorActivity.this, finalAppcolor.getRGB() , Toast.LENGTH_LONG).show();
-                    toClip(finalAppcolor.getRGB());
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
 
         Button hexButton = (Button) findViewById(R.id.hex_button);
-        final AppColor finalAppcolor1 = appcolor;
+        hexButton.setText(appcolor.getHex());
         hexButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Toast.makeText(ColorActivity.this, finalAppcolor1.getHex() , Toast.LENGTH_LONG).show();
-                toClip(finalAppcolor1.getHex());
+                Toast.makeText(ColorActivity.this, "Hex value copied to clipboard" , Toast.LENGTH_LONG).show();
+                toClip(appcolor.getHex());
             }
         });
+
+
         Button colorNameButton = (Button) findViewById(R.id.colorname_button);
-        final AppColor finalAppcolor2 = appcolor;
+        colorNameButton.setText(appcolor.getColorName());
         colorNameButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Toast.makeText(ColorActivity.this, finalAppcolor2.getColorName() , Toast.LENGTH_LONG).show();
+                Toast.makeText(ColorActivity.this, "Color name copied to clipboard" , Toast.LENGTH_LONG).show();
+                toClip(appcolor.getColorName());
             }
         });
     }
