@@ -15,6 +15,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import java.io.IOException;
 
 /**
@@ -28,6 +35,7 @@ public class ColorActivity extends AppCompatActivity {
     private Bitmap mBitmap;
     private Canvas mCanvas;
     private Rect mBounds;
+    AppColor appcolor;
 
     public void initIfNeeded() {
         if(mBitmap == null) {
@@ -99,7 +107,7 @@ public class ColorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_color);
         int[] colorInt = (getBackgroundColor(findViewById(R.id.color_textview)));
         Integer[] test = rgbFromPicture("/storage/emulated/0/Android/data/com.example.hugverk.hugverk2/files/pic.jpg");
-        AppColor appcolor = null;
+
 
         Log.d("try appcolor","Oncreate place");
 
@@ -113,6 +121,25 @@ public class ColorActivity extends AppCompatActivity {
             e.printStackTrace();
             Log.d("try appcolor","try");
         }
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "https://colornames.herokuapp.com/hex/" + appcolor.getCleanHex();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e("Response is: ", response);
+                        appcolor.setColorName(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("That didn't work!", "FUCK");
+            }
+        });
+        queue.add(stringRequest);
+
 
 
         Button btn = (Button)findViewById(R.id.camera_button);
