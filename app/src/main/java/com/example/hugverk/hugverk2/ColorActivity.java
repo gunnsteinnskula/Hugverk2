@@ -37,6 +37,7 @@ public class ColorActivity extends AppCompatActivity {
         }
     }
 
+
     public static Integer[] rgbFromPicture(String path){
         Bitmap bitmap = null;
         BitmapFactory.Options options = new BitmapFactory.Options();
@@ -97,13 +98,22 @@ public class ColorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color);
         int[] colorInt = (getBackgroundColor(findViewById(R.id.color_textview)));
+        Integer[] test = rgbFromPicture("/storage/emulated/0/Android/data/com.example.hugverk.hugverk2/files/pic.jpg");
         AppColor appcolor = null;
 
+        Log.d("try appcolor","Oncreate place");
+
         try {
-            appcolor = new AppColor(colorInt);
+            appcolor = new AppColor(test);
+            String myhex = appcolor.getHex();
+            Log.d("try appcolor",myhex);
+            findViewById(R.id.color_textview).setBackgroundColor(appcolor.getInt());
+
         } catch (IOException e) {
             e.printStackTrace();
+            Log.d("try appcolor","try");
         }
+
 
         Button btn = (Button)findViewById(R.id.camera_button);
 

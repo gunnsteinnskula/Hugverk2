@@ -22,19 +22,23 @@ import javax.net.ssl.HttpsURLConnection;
 
 import cz.msebera.android.httpclient.Header;
 
+import static android.graphics.Color.parseColor;
+
 public class AppColor{
 
     private String hex;
     private String rgb;
     private String colorName;
     private String colorHue;
+    private Integer colorInt;
 
-    public AppColor(int[] rgb) throws IOException {
+    public AppColor(Integer[] rgb) throws IOException {
         this.hex = String.format( "%02x%02x%02x", rgb[0], rgb[1], rgb[2] );
         this.rgb = String.format( "Red: %s, Green: %s, Blue: %s", rgb[0], rgb[1], rgb[2] );
 
         this.colorName = "Nafn";
         this.colorHue = "TODO";
+        this.colorInt = parseColor("#"+this.hex);
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.get("https://colornames.herokuapp.com/hex/abc123", new AsyncHttpResponseHandler() {
@@ -71,6 +75,10 @@ public class AppColor{
 
     public String getHue(){
         return this.colorHue;
+    }
+
+    public Integer getInt(){
+        return this.colorInt;
     }
 
 }
