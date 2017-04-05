@@ -62,24 +62,24 @@
 
     <Button
         android:id="@+id/camera_button"
-        android:layout_width="205dp"
-        android:layout_height="44dp"
+        android:layout_width="237dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:text="Back To Camera"
+        android:text="Back To Color Picker"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.939"
-        app:layout_constraintHorizontal_bias="0.504" />
+        app:layout_constraintVertical_bias="0.94" />
 
     <TextView
         android:id="@+id/color_textview"
-        android:layout_width="400dp"
-        android:layout_height="525dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#fa8072"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -22,8 +22,10 @@
         android:id="@+id/texture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+        android:clickable="false"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <FrameLayout
         android:id="@+id/control"
@@ -58,8 +60,7 @@
         android:layout_height="wrap_content"
         android:background="?android:selectableItemBackground"
         app:srcCompat="@drawable/ic_radio_button_unchecked_black_24dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerInParent="true"/>
 
 
 </RelativeLayout>
