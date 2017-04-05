@@ -109,17 +109,13 @@ public class ColorActivity extends AppCompatActivity {
         Integer[] test = rgbFromPicture("/storage/emulated/0/Android/data/com.example.hugverk.hugverk2/files/pic.jpg");
 
 
-        Log.d("try appcolor","Oncreate place");
-
         try {
             appcolor = new AppColor(test);
             String myhex = appcolor.getHex();
-            Log.d("try appcolor",myhex);
             findViewById(R.id.color_textview).setBackgroundColor(appcolor.getInt());
 
         } catch (IOException e) {
             e.printStackTrace();
-            Log.d("try appcolor","try");
         }
 
         RequestQueue queue = Volley.newRequestQueue(this);
