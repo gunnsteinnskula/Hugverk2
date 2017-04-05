@@ -1,5 +1,6 @@
 package com.example.hugverk.hugverk2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -45,6 +46,17 @@ public class ColorActivity extends AppCompatActivity {
         }
     }
 
+    public void toClip(String stuff){
+        int sdk = android.os.Build.VERSION.SDK_INT;
+        if(sdk < android.os.Build.VERSION_CODES.HONEYCOMB) {
+            android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            clipboard.setText(stuff);
+        } else {
+            android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            android.content.ClipData clip = android.content.ClipData.newPlainText("Clipboard",stuff);
+            clipboard.setPrimaryClip(clip);
+        }
+    }
 
     public static Integer[] rgbFromPicture(String path){
         Bitmap bitmap = null;
