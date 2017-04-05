@@ -2,6 +2,7 @@ package com.example.hugverk.hugverk2;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Rect;
@@ -34,6 +35,24 @@ public class ColorActivity extends AppCompatActivity {
             mCanvas = new Canvas(mBitmap);
             mBounds = new Rect();
         }
+    }
+
+    public static Integer[] rgbFromPicture(String path){
+        Bitmap bitmap = null;
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        options.inMutable = true;
+        bitmap = BitmapFactory.decodeFile(path, options);
+        Integer p = bitmap.getPixel(bitmap.getWidth()/2,bitmap.getHeight()/2);
+        Integer R = (p >> 16) & 0xff;
+        Integer G = (p >> 8) & 0xff;
+        Integer B = p & 0xff;
+        Integer[] returnarray = {0,0,0};
+        returnarray[0] = R;
+        returnarray[1] = G;
+        returnarray[2] = B;
+        return returnarray;
+
     }
 
     public int[] getBackgroundColor(View view) {

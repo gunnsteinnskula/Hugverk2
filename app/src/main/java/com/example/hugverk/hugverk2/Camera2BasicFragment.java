@@ -24,6 +24,7 @@ import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.ImageFormat;
@@ -884,8 +885,8 @@ public class Camera2BasicFragment extends Fragment
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
-    }
 
+    }
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -895,14 +896,10 @@ public class Camera2BasicFragment extends Fragment
             }
             case R.id.info: {
                 Activity activity = getActivity();
-                if (null != activity) {
-                    new AlertDialog.Builder(activity)
-                            .setMessage(R.string.intro_message)
-                            .setPositiveButton(android.R.string.ok, null)
-                            .show();
-                }
+                startActivity(new Intent(activity, ColorActivity.class));
                 break;
             }
+
         }
     }
 
@@ -947,6 +944,10 @@ public class Camera2BasicFragment extends Fragment
                 mImage.close();
                 if (null != output) {
                     try {
+                        Integer[] test = ColorActivity.rgbFromPicture(mFile.toString());
+                        Log.d("RGB R", Integer.toString(test[0]));
+                        Log.d("RGB G", Integer.toString(test[1]));
+                        Log.d("RGB B", Integer.toString(test[2]));
                         output.close();
                     } catch (IOException e) {
                         e.printStackTrace();
