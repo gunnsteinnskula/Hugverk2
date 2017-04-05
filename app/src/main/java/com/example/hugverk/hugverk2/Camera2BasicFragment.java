@@ -770,7 +770,7 @@ public class Camera2BasicFragment extends Fragment
      * Initiate a still image capture.
      */
     private void takePicture() {
-        lockFocus();
+        runPrecaptureSequence();
     }
 
     /**
@@ -840,7 +840,7 @@ public class Camera2BasicFragment extends Fragment
                                                @NonNull CaptureRequest request,
                                                @NonNull TotalCaptureResult result) {
                     showToast("Saved: " + mFile);
-                    Log.d(TAG, mFile.toString());
+                    Log.d(TAG, "We got the color");
                     unlockFocus();
                 }
             };
@@ -945,9 +945,6 @@ public class Camera2BasicFragment extends Fragment
                 if (null != output) {
                     try {
                         Integer[] test = ColorActivity.rgbFromPicture(mFile.toString());
-                        Log.d("RGB R", Integer.toString(test[0]));
-                        Log.d("RGB G", Integer.toString(test[1]));
-                        Log.d("RGB B", Integer.toString(test[2]));
                         output.close();
                     } catch (IOException e) {
                         e.printStackTrace();
