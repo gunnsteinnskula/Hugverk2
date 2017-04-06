@@ -74,42 +74,6 @@ public class ColorActivity extends AppCompatActivity {
 
     }
 
-    public int[] getBackgroundColor(View view) {
-        // The actual color, not the id.
-        int colorInt = Color.BLACK;
-        int[] rgbArray = new int[3];
-
-        if(view.getBackground() instanceof ColorDrawable) {
-            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
-                initIfNeeded();
-
-                // If the ColorDrawable makes use of its bounds in the draw method,
-                // we may not be able to get the color we want. This is not the usual
-                // case before Ice Cream Sandwich (4.0.1 r1).
-                // Yet, we change the bounds temporarily, just to be sure that we are
-                // successful.
-                ColorDrawable colorDrawable = (ColorDrawable)view.getBackground();
-
-                mBounds.set(colorDrawable.getBounds()); // Save the original bounds.
-                colorDrawable.setBounds(0, 0, 1, 1); // Change the bounds.
-
-                colorDrawable.draw(mCanvas);
-                colorInt = mBitmap.getPixel(0, 0);
-
-                colorDrawable.setBounds(mBounds); // Restore the original bounds.
-            }
-            else {
-                colorInt = ((ColorDrawable)view.getBackground()).getColor();
-            }
-        }
-
-        rgbArray[0] = Color.red(colorInt);
-        rgbArray[1] = Color.blue(colorInt);
-        rgbArray[2] = Color.green(colorInt);
-
-        return rgbArray;
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
