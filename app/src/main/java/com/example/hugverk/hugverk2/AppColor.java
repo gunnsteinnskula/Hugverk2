@@ -4,9 +4,9 @@ import java.io.IOException;
 
 import static android.graphics.Color.parseColor;
 
-// Appcolor is a class that is used for storing all the color information
+// AppColor is a class that is used for storing all the color information
 // It's initialized a Int array containing rgb values in the range 0-255
-// Automaticly calculates the hex and Android Int color values
+// Automatically calculates the hex and Android Int color values
 // It features get functions to Hex, Rgb, Name etc...
 // It features set function for the colorname, useful for the API color name call
 public class AppColor{
@@ -29,7 +29,7 @@ public class AppColor{
     // Returns String hex value with # in front
     public String getHex() { return this.hex; }
 
-    // Returns String hex value without # in fron
+    // Returns String hex value without # in front.
     public String getCleanHex() { return this.hex.replace("#", ""); }
 
     // Returns String RGB values neatly formated
