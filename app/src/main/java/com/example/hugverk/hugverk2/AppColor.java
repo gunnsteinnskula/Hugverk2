@@ -9,15 +9,13 @@ public class AppColor{
     private String hex;
     private String rgb;
     private String colorName;
-    private String colorHue;
     private Integer colorInt;
 
     public AppColor(Integer[] rgb) throws IOException {
-        this.hex = String.format( "#%02x%02x%02x", rgb[0], rgb[1], rgb[2] );
+        this.hex = String.format( "#%02x%02x%02x", rgb[0], rgb[1], rgb[2]).toUpperCase();
         this.rgb = String.format( "RGB (%s, %s, %s)", rgb[0], rgb[1], rgb[2] );
 
         this.colorName = "Loading";
-        this.colorHue = "TODO";
         this.colorInt = parseColor(this.hex);
     }
 
@@ -34,16 +32,12 @@ public class AppColor{
 
     public String getColorName(){ return this.colorName; }
 
-    public void setColorName(String colorName){
-        this.colorName = colorName;
-    }
-
-    public String getHue(){
-        return this.colorHue;
-    }
-
     public Integer getInt(){
         return this.colorInt;
+    }
+
+    public void setColorName(String colorName){
+        this.colorName = colorName;
     }
 
 }
