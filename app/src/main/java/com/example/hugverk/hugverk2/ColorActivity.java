@@ -122,7 +122,6 @@ public class ColorActivity extends AppCompatActivity {
         });
 
         Button btn = (Button)findViewById(R.id.camera_button);
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
