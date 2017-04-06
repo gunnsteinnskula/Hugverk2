@@ -19,18 +19,13 @@ public class AppColor{
         this.colorInt = parseColor(this.hex);
     }
 
-
     public String getHex() { return this.hex; }
 
-    public String getCleanHex() {
-        String clean = this.hex;
-        return clean.replace("#", "");
-    }
+    public String getCleanHex() { return this.hex.replace("#", ""); }
 
+    public String getRGB() { return this.rgb; }
 
-    public String getRGB(){ return this.rgb; }
-
-    public String getColorName(){ return this.colorName; }
+    public String getColorName() { return this.colorName; }
 
     public Integer getInt(){
         return this.colorInt;

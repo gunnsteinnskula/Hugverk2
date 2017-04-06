@@ -18,9 +18,6 @@ import android.widget.Toast;
 
 import static android.R.attr.button;
 
-/**
- * Created by Gunnsteinn on 04/04/17.
- */
 
 public class CameraActivity extends AppCompatActivity{
 
