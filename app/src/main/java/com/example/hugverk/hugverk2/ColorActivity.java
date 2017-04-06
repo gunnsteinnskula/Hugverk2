@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -97,7 +98,6 @@ public class ColorActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.e("Response is: ", response);
                         appcolor.setColorName(response);
                         Button colorNameButton = (Button) findViewById(R.id.colorname_button);
                         colorNameButton.setText(response);
@@ -105,12 +105,21 @@ public class ColorActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("That didn't work!", "FUCK");
+                Log.e("Volley", String.valueOf(error));
             }
         });
         queue.add(stringRequest);
 
 
+        Button info = (Button) findViewById(R.id.info_button);
+        info.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("http://www.colorhexa.com/" + appcolor.getCleanHex());
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
 
         Button btn = (Button)findViewById(R.id.camera_button);
 
