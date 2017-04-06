@@ -18,7 +18,9 @@ public class AppColor{
     private Integer colorInt;
 
     public AppColor(Integer[] rgb) throws IOException {
+        // Sets the hex variable calculated from the RGB values
         this.hex = String.format( "#%02x%02x%02x", rgb[0], rgb[1], rgb[2]).toUpperCase();
+        // Sets the rgb variable in a neatly formatted string
         this.rgb = String.format( "RGB (%s, %s, %s)", rgb[0], rgb[1], rgb[2] );
 
         this.colorName = "Loading";
