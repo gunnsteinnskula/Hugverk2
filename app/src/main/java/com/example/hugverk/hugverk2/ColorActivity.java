@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -26,9 +24,6 @@ import java.io.IOException;
 
 public class ColorActivity extends AppCompatActivity {
 
-    private Bitmap mBitmap;
-    private Canvas mCanvas;
-    private Rect mBounds;
     AppColor appcolor;
 
     // Copy String to Clipboard.
@@ -43,6 +38,7 @@ public class ColorActivity extends AppCompatActivity {
             clipboard.setPrimaryClip(clip);
         }
     }
+
 
     // Get array of RGB values from image.
     public static Integer[] rgbFromPicture(String path){
@@ -68,6 +64,7 @@ public class ColorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color);
 
+
         // Get RGB value from image and create AppColor Object.
         Integer[] rgb = rgbFromPicture("/storage/emulated/0/Android/data/com.example.hugverk.hugverk2/files/pic.jpg");
         try {
@@ -76,6 +73,7 @@ public class ColorActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 
         // HTTP request to get Color Name and upadting the Appcolor object.
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -108,6 +106,7 @@ public class ColorActivity extends AppCompatActivity {
             }
         });
 
+
         // Create onClick to go Camera.
         Button btn = (Button)findViewById(R.id.camera_button);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -118,8 +117,9 @@ public class ColorActivity extends AppCompatActivity {
         });
 
 
-        // Upadate Background color.
+        // Update Background color.
         findViewById(R.id.color_textview).setBackgroundColor(Color.parseColor(appcolor.getHex()));
+
 
         // OnClick for RGB button for copy to clipboard and set value.
         Button rgbButton = (Button) findViewById(R.id.rgb_button);
@@ -132,6 +132,7 @@ public class ColorActivity extends AppCompatActivity {
             }
         });
 
+
         // OnClick for HEX button for copy to clipboard and set value.
         Button hexButton = (Button) findViewById(R.id.hex_button);
         hexButton.setText(appcolor.getHex());
@@ -142,6 +143,7 @@ public class ColorActivity extends AppCompatActivity {
                 toClip(appcolor.getHex());
             }
         });
+
 
         // OnClick for Color Name button for copy to clipboard and set value.
         Button colorNameButton = (Button) findViewById(R.id.colorname_button);
